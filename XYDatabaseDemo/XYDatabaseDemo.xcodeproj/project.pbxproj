@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		177FE0661CCE3D7900B260CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0651CCE3D7900B260CE /* main.m */; };
 		177FE0691CCE3D7900B260CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0681CCE3D7900B260CE /* AppDelegate.m */; };
-		177FE06C1CCE3D7900B260CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE06B1CCE3D7900B260CE /* ViewController.m */; };
-		177FE06F1CCE3D7900B260CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177FE06D1CCE3D7900B260CE /* Main.storyboard */; };
 		177FE0711CCE3D7900B260CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177FE0701CCE3D7900B260CE /* Assets.xcassets */; };
 		177FE0741CCE3D7900B260CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177FE0721CCE3D7900B260CE /* LaunchScreen.storyboard */; };
-		177FE07C1CCE3DD700B260CE /* Database in Resources */ = {isa = PBXBuildFile; fileRef = 177FE07B1CCE3DD700B260CE /* Database */; };
+		177FE0C31CCE4E1900B260CE /* XYDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0C01CCE4E1900B260CE /* XYDatabase.m */; };
+		177FE0C41CCE4E1900B260CE /* XYDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0C21CCE4E1900B260CE /* XYDBManager.m */; };
+		177FE0CA1CCE4E9A00B260CE /* XYDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0C91CCE4E9A00B260CE /* XYDataViewController.m */; };
+		177FE0CE1CCE4EFC00B260CE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 177FE0CD1CCE4EFC00B260CE /* libsqlite3.tbd */; };
+		177FE0D11CCE528A00B260CE /* XYDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0D01CCE528A00B260CE /* XYDataModel.m */; };
+		177FE0D41CCE52C000B260CE /* XYDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0D31CCE52C000B260CE /* XYDataCell.m */; };
+		177FE0D71CCE5E9D00B260CE /* XYUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0D61CCE5E9D00B260CE /* XYUpdateController.m */; };
+		177FE0DA1CCE6C7100B260CE /* XYSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 177FE0D91CCE6C7100B260CE /* XYSelectController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +26,24 @@
 		177FE0651CCE3D7900B260CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		177FE0671CCE3D7900B260CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		177FE0681CCE3D7900B260CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		177FE06A1CCE3D7900B260CE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		177FE06B1CCE3D7900B260CE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		177FE06E1CCE3D7900B260CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		177FE0701CCE3D7900B260CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		177FE0731CCE3D7900B260CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		177FE0751CCE3D7900B260CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		177FE07B1CCE3DD700B260CE /* Database */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Database; sourceTree = "<group>"; };
+		177FE0BF1CCE4E1900B260CE /* XYDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYDatabase.h; sourceTree = "<group>"; };
+		177FE0C01CCE4E1900B260CE /* XYDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYDatabase.m; sourceTree = "<group>"; };
+		177FE0C11CCE4E1900B260CE /* XYDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYDBManager.h; sourceTree = "<group>"; };
+		177FE0C21CCE4E1900B260CE /* XYDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYDBManager.m; sourceTree = "<group>"; };
+		177FE0C81CCE4E9A00B260CE /* XYDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYDataViewController.h; path = XYDatabaseDemo/Classes/Controller/XYDataViewController.h; sourceTree = SOURCE_ROOT; };
+		177FE0C91CCE4E9A00B260CE /* XYDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYDataViewController.m; path = XYDatabaseDemo/Classes/Controller/XYDataViewController.m; sourceTree = SOURCE_ROOT; };
+		177FE0CD1CCE4EFC00B260CE /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		177FE0CF1CCE528A00B260CE /* XYDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYDataModel.h; path = XYDatabaseDemo/Classes/Model/XYDataModel.h; sourceTree = SOURCE_ROOT; };
+		177FE0D01CCE528A00B260CE /* XYDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYDataModel.m; path = XYDatabaseDemo/Classes/Model/XYDataModel.m; sourceTree = SOURCE_ROOT; };
+		177FE0D21CCE52C000B260CE /* XYDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYDataCell.h; path = XYDatabaseDemo/Classes/View/XYDataCell.h; sourceTree = SOURCE_ROOT; };
+		177FE0D31CCE52C000B260CE /* XYDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYDataCell.m; path = XYDatabaseDemo/Classes/View/XYDataCell.m; sourceTree = SOURCE_ROOT; };
+		177FE0D51CCE5E9D00B260CE /* XYUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYUpdateController.h; path = XYDatabaseDemo/Classes/Controller/XYUpdateController.h; sourceTree = SOURCE_ROOT; };
+		177FE0D61CCE5E9D00B260CE /* XYUpdateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYUpdateController.m; path = XYDatabaseDemo/Classes/Controller/XYUpdateController.m; sourceTree = SOURCE_ROOT; };
+		177FE0D81CCE6C7100B260CE /* XYSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYSelectController.h; path = XYDatabaseDemo/Classes/Controller/XYSelectController.h; sourceTree = SOURCE_ROOT; };
+		177FE0D91CCE6C7100B260CE /* XYSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYSelectController.m; path = XYDatabaseDemo/Classes/Controller/XYSelectController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				177FE0CE1CCE4EFC00B260CE /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +61,7 @@
 		177FE0581CCE3D7900B260CE = {
 			isa = PBXGroup;
 			children = (
+				177FE0CD1CCE4EFC00B260CE /* libsqlite3.tbd */,
 				177FE0631CCE3D7900B260CE /* XYDatabaseDemo */,
 				177FE0621CCE3D7900B260CE /* Products */,
 			);
@@ -60,12 +78,10 @@
 		177FE0631CCE3D7900B260CE /* XYDatabaseDemo */ = {
 			isa = PBXGroup;
 			children = (
-				177FE07B1CCE3DD700B260CE /* Database */,
+				177FE0BE1CCE4E1900B260CE /* Database */,
+				177FE07F1CCE4D9500B260CE /* Classes */,
 				177FE0671CCE3D7900B260CE /* AppDelegate.h */,
 				177FE0681CCE3D7900B260CE /* AppDelegate.m */,
-				177FE06A1CCE3D7900B260CE /* ViewController.h */,
-				177FE06B1CCE3D7900B260CE /* ViewController.m */,
-				177FE06D1CCE3D7900B260CE /* Main.storyboard */,
 				177FE0701CCE3D7900B260CE /* Assets.xcassets */,
 				177FE0721CCE3D7900B260CE /* LaunchScreen.storyboard */,
 				177FE0751CCE3D7900B260CE /* Info.plist */,
@@ -80,6 +96,59 @@
 				177FE0651CCE3D7900B260CE /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		177FE07F1CCE4D9500B260CE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				177FE0801CCE4D9500B260CE /* Controller */,
+				177FE0811CCE4D9500B260CE /* Model */,
+				177FE0821CCE4D9500B260CE /* View */,
+			);
+			name = Classes;
+			path = Database/Classes;
+			sourceTree = "<group>";
+		};
+		177FE0801CCE4D9500B260CE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				177FE0C81CCE4E9A00B260CE /* XYDataViewController.h */,
+				177FE0C91CCE4E9A00B260CE /* XYDataViewController.m */,
+				177FE0D51CCE5E9D00B260CE /* XYUpdateController.h */,
+				177FE0D61CCE5E9D00B260CE /* XYUpdateController.m */,
+				177FE0D81CCE6C7100B260CE /* XYSelectController.h */,
+				177FE0D91CCE6C7100B260CE /* XYSelectController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		177FE0811CCE4D9500B260CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				177FE0CF1CCE528A00B260CE /* XYDataModel.h */,
+				177FE0D01CCE528A00B260CE /* XYDataModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		177FE0821CCE4D9500B260CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				177FE0D21CCE52C000B260CE /* XYDataCell.h */,
+				177FE0D31CCE52C000B260CE /* XYDataCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		177FE0BE1CCE4E1900B260CE /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				177FE0BF1CCE4E1900B260CE /* XYDatabase.h */,
+				177FE0C01CCE4E1900B260CE /* XYDatabase.m */,
+				177FE0C11CCE4E1900B260CE /* XYDBManager.h */,
+				177FE0C21CCE4E1900B260CE /* XYDBManager.m */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +177,7 @@
 		177FE0591CCE3D7900B260CE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = XY;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "夏雁博";
 				TargetAttributes = {
@@ -140,9 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				177FE0741CCE3D7900B260CE /* LaunchScreen.storyboard in Resources */,
-				177FE07C1CCE3DD700B260CE /* Database in Resources */,
 				177FE0711CCE3D7900B260CE /* Assets.xcassets in Resources */,
-				177FE06F1CCE3D7900B260CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,23 +221,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				177FE06C1CCE3D7900B260CE /* ViewController.m in Sources */,
+				177FE0C31CCE4E1900B260CE /* XYDatabase.m in Sources */,
+				177FE0D41CCE52C000B260CE /* XYDataCell.m in Sources */,
+				177FE0DA1CCE6C7100B260CE /* XYSelectController.m in Sources */,
+				177FE0C41CCE4E1900B260CE /* XYDBManager.m in Sources */,
+				177FE0D11CCE528A00B260CE /* XYDataModel.m in Sources */,
+				177FE0CA1CCE4E9A00B260CE /* XYDataViewController.m in Sources */,
 				177FE0691CCE3D7900B260CE /* AppDelegate.m in Sources */,
 				177FE0661CCE3D7900B260CE /* main.m in Sources */,
+				177FE0D71CCE5E9D00B260CE /* XYUpdateController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		177FE06D1CCE3D7900B260CE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				177FE06E1CCE3D7900B260CE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		177FE0721CCE3D7900B260CE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

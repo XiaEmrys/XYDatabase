@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "XYDataViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window = window;
+    XYDataViewController *dataVC = [[XYDataViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController *rootVC = [[UINavigationController alloc] initWithRootViewController:dataVC];
+    window.rootViewController = rootVC;
+    [window makeKeyAndVisible];
     return YES;
 }
 
