@@ -170,7 +170,8 @@
 -(NSMutableArray<XYDataModel *> *)dataArray{
     if (nil == _dataArray) {
         _dataArray = [NSMutableArray array];
-        NSString *dataPath = [NSHomeDirectory() stringByAppendingPathComponent:@"data.sqlite"];
+//        NSString *dataPath = [NSHomeDirectory() stringByAppendingPathComponent:@"data.sqlite"];
+        NSString *dataPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"data.sqlite"];
         self.dbManger = [XYDBManager sharedManager];
         BOOL openRec = [self.dbManger openSqlWithFilePath:dataPath error:^(NSError *error) {
             NSLog(@"%@", error);
