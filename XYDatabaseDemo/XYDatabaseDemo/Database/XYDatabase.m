@@ -175,8 +175,7 @@
 }
 
 // 查询数据
--(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements error:(errorMsg)error {
-    
+-(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements orderBy:(NSString *)item isAsc:(BOOL)isAsc error:(errorMsg)error {
     NSArray *items = [self tableInfo:tableName];
     NSString *selectSql = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
     for (int i = 0; i < requirements.count; ++i) {
@@ -185,6 +184,14 @@
         } else {
             selectSql =
             [selectSql stringByAppendingFormat:@" AND %@", requirements[i]];
+        }
+    }
+    if (nil != item) {
+        selectSql = [selectSql stringByAppendingFormat:@" ORDER BY %@", item];
+        if (isAsc) {
+            selectSql = [selectSql stringByAppendingString:@" ASC"];
+        } else {
+            selectSql = [selectSql stringByAppendingString:@" DESC"];
         }
     }
     selectSql = [selectSql stringByAppendingString:@";"];
@@ -210,10 +217,13 @@
             [selectArray addObject:resultDict];
         }
         return selectArray;
-    } else {
-        error([self sqliteError:selectResult]);
-        return nil;
     }
+    error([self sqliteError:selectResult]);
+    return nil;
+};
+-(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements error:(errorMsg)error {
+    
+    return [self selectDataFromTable:tableName requirements:requirements orderBy:nil isAsc:YES error:error];
 }
 
 // 获取表中所有字段名及字段类型

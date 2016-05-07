@@ -39,16 +39,8 @@ static XYDBManager *_instance = nil;
     self.db = db;
 
 
-    BOOL openSqlResult = [self.db openSqlFileWithFilePath:filePath errorMsg:^(NSError *errorMsg) {
-        error(errorMsg);
-    }];
+    BOOL openSqlResult = [self.db openSqlFileWithFilePath:filePath errorMsg:error];
     
-//    if (openSqlResult) {
-//        //打开数据库成功
-//        return YES;
-//    } else {
-//        return NO;
-//    }
     if (!openSqlResult) {
         return NO;
     }
@@ -71,9 +63,7 @@ static XYDBManager *_instance = nil;
   BOOL creatTableResult = [self.db creatTable:tableName
                                WithPrimaryKer:primaryKey
                               isAutoIncrement:isAutoIncrement
-                                     andItems:items errorMsg:^(NSError *errorMsg) {
-                                         error(errorMsg);
-                                     }];
+                                     andItems:items errorMsg:error];
   if (!creatTableResult) {
     // 创建表成功
       return NO;
@@ -91,9 +81,7 @@ static XYDBManager *_instance = nil;
                      record:(NSDictionary *)record
                       error:(error)error {
   [self.db insertRecordInTable:tableName
-                        record:record errorMsg:^(NSError *errorMsg) {
-                            error(errorMsg);
-                        }];
+                        record:record errorMsg:error];
 }
 
 // 删除数据
@@ -101,9 +89,7 @@ static XYDBManager *_instance = nil;
                  requirements:(NSArray<NSString *> *)requirements
                         error:(error)error {
   [self.db deleteRecordFromtable:tableName
-                    requirements:requirements errorMsg:^(NSError *errorMsg) {
-                        error(errorMsg);
-                    }];
+                    requirements:requirements errorMsg:error];
 }
 
 // 修改数据
@@ -113,16 +99,16 @@ static XYDBManager *_instance = nil;
               error:(error)error {
   [self.db updataTable:tableName
                targets:targets
-          requirements:requirements error:^(NSError *errorMsg) {
-              error(errorMsg);
-          }];
+          requirements:requirements error:error];
 }
 
 // 查询数据
+-(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements orderBy:(NSString *)item isAsc:(BOOL)isAsc error:(error)error{
+    NSArray *selectArray = [self.db selectDataFromTable:tableName requirements:requirements orderBy:item isAsc:isAsc error:error];
+    return selectArray;
+}
 -(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements error:(error)error {
-    NSArray *selectArray = [self.db selectDataFromTable:tableName requirements:requirements error:^(NSError *errorMsg) {
-        error(errorMsg);
-    }];
+    NSArray *selectArray = [self.db selectDataFromTable:tableName requirements:requirements error:error];
     return selectArray;
 }
 

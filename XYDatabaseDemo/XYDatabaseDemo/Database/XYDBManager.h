@@ -95,6 +95,7 @@ typedef void (^error)(NSError *error);
  *  selectRecord
  */
 -(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements error:(error)error;
+-(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements orderBy:(NSString *)item isAsc:(BOOL)isAsc error:(error)error;
 
 /**
  *   beginTransaction

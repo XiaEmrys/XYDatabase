@@ -45,9 +45,6 @@
 -(void)addData{
     XYDataModel *lastData = self.dataArray.lastObject;
     
-    NSMutableArray<XYDataModel *> *dataArray = [NSMutableArray arrayWithCapacity:100];
-    
-    
     for (int i = 0; i < 10; ++i) {
         
         NSString *tableName = @"t_test";
@@ -60,16 +57,9 @@
         [self.dbManger insertRecordInTable:tableName record:record error:^(NSError *error) {
             NSLog(@"%@",error);
         }];
-        
-        XYDataModel *data = [[XYDataModel alloc] init];
-        data.dataID = lastData.dataID + i + 1;
-        data.detail = [record objectForKey:@"detail"];
-        data.num = [[record objectForKey:@"num"] integerValue];
-        data.real = [[record objectForKey:@"real"] floatValue];
-        
-        [dataArray addObject:data];
     }
-    [self.dataArray addObjectsFromArray:dataArray];
+    NSString *dataPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"data.sqlite"];
+    self.dataArray = [NSMutableArray arrayWithArray:[self loadDataFromSqlFile:dataPath]];
     [self.tableView reloadData];}
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +71,41 @@
     [self.dbManger closeSql];
 }
 
+-(NSArray *)loadDataFromSqlFile:(NSString *)sqlFilePath{
+
+    NSMutableArray *dataArray = [NSMutableArray array];
+    
+    self.dbManger = [XYDBManager sharedManager];
+    BOOL openRec = [self.dbManger openSqlWithFilePath:sqlFilePath error:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+    if (openRec) {
+        NSString *tableName = @"t_test";
+        NSString *primaryKey = @"id";
+        NSDictionary *items = @{
+                                @"detail":kTableItemTypeTextNotNull,
+                                @"num":kTableItemTypeIntegerNotNull,
+                                @"real":kTableItemTypeRealNotNull
+                                };
+        BOOL creatRec = [self.dbManger creatTable:tableName WithPrimaryKey:primaryKey isAutoIncrement:YES andItems:items error:^(NSError *error) {
+            NSLog(@"%@", error);
+        }];
+        if (creatRec) {
+            NSArray *dataArr = [self.dbManger getAllRecordFromTable:@"t_test" error:^(NSError *error) {
+                NSLog(@"%@",error);
+            }];
+            for (NSDictionary *dataDic in dataArr) {
+                XYDataModel *dataModel = [[XYDataModel alloc]init];
+                dataModel.dataID = [[dataDic objectForKey:primaryKey] integerValue];
+                dataModel.detail = [dataDic objectForKey:@"detail"];
+                dataModel.num = [[dataDic objectForKey:@"num"] integerValue];
+                dataModel.real = [[dataDic objectForKey:@"real"] floatValue];
+                [dataArray addObject:dataModel];
+            }
+        }
+    }
+    return dataArray;
+}
 
 #pragma mark - TableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -146,7 +171,7 @@
 
 #pragma mark - UISearchResultsUpdating
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
-    NSArray *requirements = @[[NSString stringWithFormat:@"detail LIKE '%@'",searchController.searchBar.text]];
+    NSArray *requirements = @[[NSString stringWithFormat:@"detail LIKE '%%%@%%'",searchController.searchBar.text]];
     NSArray *resultArray = [self.dbManger selectDataFromTable:@"t_test" requirements:requirements error:^(NSError *error) {
         NSLog(@"%@", error);
     }];
@@ -169,37 +194,9 @@
 #pragma mark - 懒加载
 -(NSMutableArray<XYDataModel *> *)dataArray{
     if (nil == _dataArray) {
-        _dataArray = [NSMutableArray array];
         NSString *dataPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"data.sqlite"];
-        self.dbManger = [XYDBManager sharedManager];
-        BOOL openRec = [self.dbManger openSqlWithFilePath:dataPath error:^(NSError *error) {
-            NSLog(@"%@", error);
-        }];
-        if (openRec) {
-            NSString *tableName = @"t_test";
-            NSString *primaryKey = @"id";
-            NSDictionary *items = @{
-                                    @"detail":kTableItemTypeTextNotNull,
-                                    @"num":kTableItemTypeIntegerNotNull,
-                                    @"real":kTableItemTypeRealNotNull
-                                    };
-            BOOL creatRec = [self.dbManger creatTable:tableName WithPrimaryKey:primaryKey isAutoIncrement:YES andItems:items error:^(NSError *error) {
-                NSLog(@"%@", error);
-            }];
-            if (creatRec) {
-                NSArray *dataArr = [self.dbManger getAllRecordFromTable:@"t_test" error:^(NSError *error) {
-                    NSLog(@"%@",error);
-                }];
-                for (NSDictionary *dataDic in dataArr) {
-                    XYDataModel *dataModel = [[XYDataModel alloc]init];
-                    dataModel.dataID = [[dataDic objectForKey:primaryKey] integerValue];
-                    dataModel.detail = [dataDic objectForKey:@"detail"];
-                    dataModel.num = [[dataDic objectForKey:@"num"] integerValue];
-                    dataModel.real = [[dataDic objectForKey:@"real"] floatValue];
-                    [_dataArray addObject:dataModel];
-                }
-            }
-        }
+
+        _dataArray = [NSMutableArray arrayWithArray:[self loadDataFromSqlFile:dataPath]];
     }
     return _dataArray;
 }

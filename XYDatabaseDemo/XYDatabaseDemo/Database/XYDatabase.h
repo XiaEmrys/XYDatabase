@@ -39,6 +39,7 @@ typedef void (^errorMsg)(NSError *errorMsg);
               error:(errorMsg)error;
 // 查询数据
 -(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements error:(errorMsg)error;
+-(NSArray *)selectDataFromTable:(NSString *)tableName requirements:(NSArray<NSString *> *)requirements orderBy:(NSString *)item isAsc:(BOOL)isAsc error:(errorMsg)error;
 
 // 事务
 -(BOOL)beginTransaction;
