@@ -12,6 +12,10 @@ typedef void(^updateDataBlock)(NSString *detail, NSInteger num, float real);
 
 @interface XYUpdateController : UIViewController
 
+@property(nonatomic, strong) UITextField *detailField;
+@property(nonatomic, strong) UITextField *numField;
+@property(nonatomic, strong) UITextField *realField;
+
 @property(nonatomic, strong) updateDataBlock block;
 
 -(void)makeUptateDataBlock:(updateDataBlock)block;

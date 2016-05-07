@@ -149,6 +149,11 @@
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     XYUpdateController *vc = [[XYUpdateController alloc] init];
+    
+    vc.detailField.text = self.dataArray[indexPath.row].detail;
+    vc.numField.text = [NSString stringWithFormat:@"%zd", self.dataArray[indexPath.row].num];
+    vc.realField.text = [NSString stringWithFormat:@"%.2f", self.dataArray[indexPath.row].real];
+    
     [vc makeUptateDataBlock:^(NSString *detail, NSInteger num, float real) {
         XYDataModel *data = self.dataArray[indexPath.row];
         data.detail = detail;

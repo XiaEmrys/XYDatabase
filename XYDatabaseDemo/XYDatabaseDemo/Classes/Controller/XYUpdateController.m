@@ -13,10 +13,6 @@
 
 @interface XYUpdateController ()
 
-@property(nonatomic, strong) UITextField *detailField;
-@property(nonatomic, strong) UITextField *numField;
-@property(nonatomic, strong) UITextField *realField;
-
 @end
 
 @implementation XYUpdateController
