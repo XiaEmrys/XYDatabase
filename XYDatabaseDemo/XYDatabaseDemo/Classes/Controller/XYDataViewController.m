@@ -138,7 +138,9 @@
             NSLog(@"%@", error);
         }];
         
-        [self.dataArray removeObject:data];
+        NSMutableArray *dataArrayM = [NSMutableArray arrayWithArray:self.dataArray];
+        [dataArrayM removeObject:data];
+        self.dataArray = [NSMutableArray arrayWithArray:dataArrayM];
         
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
